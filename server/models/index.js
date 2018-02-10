@@ -11,8 +11,9 @@ module.exports = {
           console.log('error received'); 
         } else {
           console.log('SUCCESS');
+          console.log('RESULTS-----'+JSON.stringify(results));
           for (var i = 0; i < results.length; i++) {
-            rows.push(JSON.parse(JSON.stringify(results[i])));
+            rows.push(results[i]);
           }
         }
       });

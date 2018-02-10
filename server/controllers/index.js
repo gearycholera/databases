@@ -12,7 +12,7 @@ module.exports = {
   messages: { // a function which handles a get request for all messages
     get: function (req, res) { 
       var rows = models.messages.get();
-      console.log(rows);
+      console.log('++++++++++'+rows);
       res.end(JSON.stringify(rows));
     },
     post: function (req, res) {

@@ -1,0 +1,12 @@
+INSERT INTO rooms VALUE (0,'room3');
+INSERT INTO users VALUE (0,'louis');
+INSERT INTO messages VALUE (0,1,'test',1);
+INSERT INTO rooms VALUE (0,'room4');
+INSERT INTO users VALUE (0,'giri');
+INSERT INTO messages VALUE (0,2,'test from giri',2);
+INSERT INTO rooms VALUE (0,'lobby');
+INSERT INTO users VALUE (0,'yuehan');
+INSERT INTO messages VALUE (0,3,'yuehan was here',3);
+
+
+ SELECT users.username,messages.message FROM users,messages WHERE users.userID = messages.userID;
