@@ -7,8 +7,13 @@ var defaultCorsHeaders = {
 };
 var headers = defaultCorsHeaders;
 var statusCode = 200;
-var storage = {results: [{"username":"louis","message":"test"}]};
+var storage = {results: []};
 headers['Content-Type'] = 'application/json';
+
+models.messages.get(function(data) {
+  storage.results = data;
+});
+
 module.exports = {
   messages: { // a function which handles a get request for all messages
     get: function (req, res) { 
@@ -23,7 +28,7 @@ module.exports = {
       });
       req.on('end', function() {
         var parsed = JSON.parse(data);
-        console.log('ppppp'+JSON.stringify(parsed)); // CONVERT THIS AND QUERY IT PROPERLY
+        models.messages.post(parsed.username, parsed.roomname);
         res.end(JSON.stringify(storage)); 
       });
     }

@@ -10,3 +10,24 @@ INSERT INTO messages VALUE (0,3,'yuehan was here',3);
 
 
  SELECT users.username,messages.message FROM users,messages WHERE users.userID = messages.userID;
+
+mysql -u student < server/schema.sql\
+
+Allow-Control-Allow-Origin PLUGIN
+
+
+SELECT CASE WHEN username = 'giri' THEN userID ELSE INSERT INTO users VALUE (0,'giri') END FROM users WHERE username = 'giri';
+
+;
+IF NOT EXISTS (SELECT * FROM users WHERE username = 'giri') THEN BEGIN
+INSERT INTO users VALUES (0,'giri')
+END
+SELECT userID from users WHERE username = 'giri'; 
+
+IF(EXISTS(SELECT username FROM users WHERE username = 'giri'));
+  SELECT username FROM users WHERE 
+
+IF NOT EXISTS(SELECT * FROM users WHERE username = 'giri') THEN
+  INSERT INTO users VALUES (0, 'giri')
+END IF;
+  SELECT userid FROM users WHERE username = 'giri';

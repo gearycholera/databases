@@ -74,7 +74,7 @@ var app = {
         var mostRecentMessage = data.results[0];
 
         // Only bother updating the DOM if we have a new message
-        if (mostRecentMessage.objectId !== app.lastMessageId) {
+       // if (mostRecentMessage.objectId === app.lastMessageId) {
           // Update the UI with the fetched rooms
           app.renderRoomList(data.results);
 
@@ -82,8 +82,8 @@ var app = {
           app.renderMessages(data.results, animate);
 
           // Store the ID of the most recent message
-          app.lastMessageId = mostRecentMessage.objectId;
-        }
+         // app.lastMessageId = mostRecentMessage.objectId;
+      //  }
       },
       error: function(error) {
         console.error('chatterbox: Failed to fetch messages', error);
