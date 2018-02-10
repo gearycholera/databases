@@ -2,22 +2,20 @@ var db = require('../db');
 
 module.exports = {
   messages: {// a function which produces all the messages
-    get: function () {
+    get: function () { 
       var queryString = 'SELECT users.username,messages.message FROM users,messages WHERE users.userID = messages.userID;';
-      var rows = [];
-     // db.con.connect();
+      var rows = []; // ADD ROOMS TO THIS ^---------------------
       db.con.query(queryString, function(err, results) { 
         if (err) {
           console.log('error received'); 
         } else {
           console.log('SUCCESS');
-          console.log('RESULTS-----'+JSON.stringify(results));
+          console.log('RESULTS-----' + JSON.stringify(results));
           for (var i = 0; i < results.length; i++) {
             rows.push(results[i]);
           }
         }
       });
-      //db.con.end();
       return rows;
     }, 
  
