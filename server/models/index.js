@@ -34,12 +34,8 @@ module.exports = {
             console.log('room error1 received'); 
           } else if (result.length > 0) {
             if (result) {
-              console.log('______' + result);
               roomID = result[0]['id'];
               resolve(roomID);
-              console.log('roomID and result[0] are :',JSON.stringify(roomID)+' '+JSON.stringify(result[0]['id']));
-            } else {
-              console.log('sup room? WTF');
             }
           } else {
             console.log('inserting room cause it hasnt been found');
@@ -51,7 +47,6 @@ module.exports = {
                   if (err) {
                     console.log('error');
                   } else {
-                    console.log('updated rooms');
                     roomID = result[0]['id'];
                     resolve(roomID);
                   }
@@ -68,23 +63,19 @@ module.exports = {
             console.log('error received 11 111111 1'); 
           } else if (result.length > 0) {
             if (result) {
-              console.log('______' + result);
               userID = result[0]['userID'];
               resolve(userID);
-            } else {
-              console.log('sup? WTF');
             }
           } else {
             console.log('inserting user cause it hasnt been found');
             db.con.query("INSERT INTO users VALUES (0,'" + username +"');", function(err, result) {
               if (err) {
-                console.log('error received222222'); 
+                console.log('error received2'); 
               } else {
                 db.con.query(userCheckQuery, function(err,result) {
                   if (err) {
                     console.log('error');
                   } else {
-                    console.log('updated users');
                     userID = result[0]['userID'];
                     resolve(userID);
                   }

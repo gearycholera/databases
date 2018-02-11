@@ -21,6 +21,7 @@ module.exports = {
       res.end(JSON.stringify(storage));
     },
     post: function (req, res) {
+
       res.writeHead(201, headers);
       var data = '';
       req.on('data', (chunk) => {
@@ -28,9 +29,21 @@ module.exports = {
       });
       req.on('end', function() {
         var parsed = JSON.parse(data);
-        models.messages.post(parsed.username, parsed.roomname, parsed.message);
-        res.end(JSON.stringify(storage)); 
+        var setPost = new Promise(function(resolve, reject){
+          models.messages.post(parsed.username, parsed.roomname, parsed.message);
+          resolve();
+        });
+        var setPage = new Promise(function(resolve, reject){
+          models.messages.get(function(data) {
+            storage.results = data;
+            resolve();
+          });
+        });
+        Promise.all([setPost, setPage]).then(function(results){
+          res.end(JSON.stringify(storage)); 
+        });
       });
+
     }
   },
   // a function which handles posting a message to the database
