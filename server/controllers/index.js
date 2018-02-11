@@ -28,7 +28,7 @@ module.exports = {
       });
       req.on('end', function() {
         var parsed = JSON.parse(data);
-        models.messages.post(parsed.username, parsed.roomname);
+        models.messages.post(parsed.username, parsed.roomname, parsed.message);
         res.end(JSON.stringify(storage)); 
       });
     }
